@@ -244,7 +244,7 @@ async def analyze_colonies(file: UploadFile = File(...)):
 @app.get("/results/{filename}")
 async def get_processed_image(filename: str):
     try:
-        filename = "processed_" + filename + ".jpg"
+        filename = filename
         print(filename)
         file_path = os.path.join(OUTPUT_DIR, filename)
         if os.path.exists(file_path):
@@ -263,7 +263,7 @@ async def health_check():
 async def delete_processed_image(filename: str):
     """Eliminar una imagen procesada específica"""
     try:
-        filename = "processed_" + filename + ".jpg"
+        filename = filename
         file_path = os.path.join(OUTPUT_DIR, filename)
 
         if not os.path.exists(file_path):
