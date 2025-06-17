@@ -191,7 +191,7 @@ def procesar_imagen_jpg(file_contents: bytes) -> tuple:
                     "subcolonies": subcolonias
                 })
 
-        # Mostrar resumen en la imagen (igual que en tu código)
+
         resumen_texto = f"Total: {total_colonias} (R:{count_red} A:{count_blue} C:{count_brown})"
         cv2.putText(img_original, resumen_texto, (20, 40),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
@@ -224,7 +224,7 @@ async def analyze_colonies(file: UploadFile = File(...)):
 
         processed_img, result = procesar_imagen_jpg(contents)
 
-        output_filename = f"processed_{file.filename}"
+        output_filename = file.filename
         output_path = os.path.join(OUTPUT_DIR, output_filename)
         cv2.imwrite(output_path, processed_img, [int(cv2.IMWRITE_JPEG_QUALITY), 95])
 
