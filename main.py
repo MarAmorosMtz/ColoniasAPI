@@ -211,7 +211,7 @@ def procesar_imagen_jpg(file_contents: bytes) -> tuple:
         raise ValueError(f"Error procesando imagen: {str(e)}")
 
 
-@app.post("/analyze", response_model=AnalysisResult)
+@app.post("/analyze/", response_model=AnalysisResult)
 async def analyze_colonies(file: UploadFile = File(...)):
     """Endpoint para analizar imágenes JPG de colonias bacterianas"""
     try:
